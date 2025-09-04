@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat App</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <br><br><h2>Chats</h2>
+      <!-- Group Search -->
+      <div id="group-search-container">
+        <input type="text" id="group-search-input" placeholder="Search groups..." autocomplete="off" />
+        <ul id="group-search-results" class="hidden"></ul>
+      </div>
+      <ul id="chatList"></ul>
+      <button id="add-btn">+</button>
+    </aside>
+
+    <main id="chatBox" class="hidden">
+      <header>
+        <button id="backBtn">←</button>
+        <h2 id="chatTitle">Chat</h2>
+        <div id="online-status" class="hidden">Online</div>
+        <div id="typing-indicator" class="hidden">is typing</div>
+      </header>
+      <section id="messages"></section>
+      <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Type your message..." autocomplete="off" required />
+        <button id="send-message-button" type="submit">Send</button>
+      </form>
+      
+    </main>
+  </div>
+  <!-- Modal backdrop -->
+  <div id="modal-backdrop" class="hidden">
+    <div class="modal" id="modal-new">
+      <h2>What would you like to do?</h2>
+      <button id="create-group">Create New Group</button>
+      <button id="send-friend-request">Send Friend Request</button>
+      <button class="close-modal">Cancel</button>
+    </div>
+    <div class="modal hidden" id="modal-group">
+      <h2>New Group</h2>
+      <input id="group-name-input" autocomplete="off" placeholder="group name" />
+      <button id="submit-group-creation">Create New Group</button>
+      <button class="close-modal">Cancel</button>
+    </div>
+    <div class="modal hidden" id="modal-make-request">
+      <h2>Make A Friend Request</h2>
+      <input id="friend-name-input" autocomplete="off" placeholder="username" />
+      <button id="submit-friend-request">Create New Group</button>
+      <button class="close-modal">Cancel</button>
+    </div>
+  </div>
+    <!-- Toggle Button -->
+  <button id="friend-menu-toggle">☰</button>
+
+  <!-- Sliding Friend Menu -->
+  <div id="friend-menu" class="hidden">
+    <h3>Friend Requests</h3>
+    <button id="requests-sent-btn">Requests Sent</button>
+    <button id="requests-received-btn">Requests Received</button>
+    <!-- Requests Received List -->
+    <ul id="requests-received-list" class="request-list hidden"></ul>
+
+    <!-- Requests Sent List -->
+    <ul id="requests-sent-list" class="request-list hidden"></ul>
+
+  </div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/init.js"></script>
+</body>
+</html>
